@@ -1,0 +1,33 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>list the products</h2>
+    <button onclick="loaddata()">Load Data</button>
+    <div id="output" class="class"></div>
+    <script>
+        function loaddata(){
+        fetch('https://fakestoreapi.com/products')
+  .then(response => response.json())
+  .then((data )=> {
+     const list = data.map(
+        (product)=>
+           `<div class="product">
+            <img src="${product.image}" alt="${product.title}" width="50px";
+            <p>${product.id}</p>
+            <h3>${product.title}</h3>
+            <p>Price: $${product.price}</p>
+            <p>${product.description}</P>
+            </div>`
+     )
+     .join("");
+     document.getElementById("output").innerHTML = list;    
+    });
+}
+    </script>
+</body>
+</html>
