@@ -1,0 +1,55 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        body{
+            color: black;
+            font-size: xx-large;
+            align-items: center;
+        }
+        #clock{
+            margin: 550px;
+            margin-top: 250px;
+            border: 20px solid black;
+            width: 200px;
+            text-align: center;
+            padding: 10px;
+            box-shadow: 0px 0px 200px white;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">loading....</loading></div>
+    <script>
+        function DigitalClock(){
+        let now=new Date();
+        console.log(now);
+
+        let hours=now.getHours();
+        console.log(hours);
+        let minits=now.getMinutes();
+        console.log(minits);
+        let second=now.getSeconds();
+        console.log(second)
+
+        const ampm=hours >=12 ? 'pm':'am'
+        console.log(ampm)
+
+        hours=hours % 12;
+        hours=hours ? hours : 12;
+        
+        const hh=String(hours).padStart(2,'0');
+        const mm=String(minits).padStart(2, '0');
+        const ss=String(second).padStart(2, '0');
+        
+        const timeString=`${hh}:${mm}:${ss}:${ampm}`;
+        document.getElementById("clock").textContent=timeString;
+
+        }
+        DigitalClock();
+        setInterval(DigitalClock,1000);
+    </script>
+</body>
+</html>
